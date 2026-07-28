@@ -132,6 +132,37 @@ docker compose run --rm tests
 
 ---
 
+## Résultats d'évaluation
+
+Exécution réelle de `python evaluate.py` (17 questions, `gpt-4o` temp=0,
+détection de refus + correspondance de mots-clés) :
+
+| Métrique | Valeur |
+|----------|--------|
+| Questions correctes | 12 / 17 (70.6 %) |
+| Faux positifs (piège hors-périmètre) | 0 / 3 (0.0 %) |
+| Faux négatifs (refus alors qu'in-scope) | 2 |
+| Temps de réponse moyen | 2.4 s |
+
+Détail par catégorie (voir `eval_results.json` pour les réponses complètes) :
+
+- **Fait simple / Lecture de tableau / Raisonnement multi-passages** :
+  100 % correct, y compris en français (Q2, Q5).
+- **Hors périmètre (piège)** : 3/3 refusés correctement, 0 faux positif —
+  le système n'invente jamais une réponse hors sujet.
+- **Chiffre précis** : réponses correctes (592 800 km²) mais classées
+  "kw missing" car le mot-clé de test (`587`, superficie terrestre) ne
+  correspond pas à la superficie totale citée par l'article ; c'est un
+  défaut du jeu de test, pas du système.
+- **Ambiguïté temporelle** : sur 3 questions, 1 correcte (taux de
+  pauvreté avec les deux périodes citées), 2 refusées alors qu'une
+  réponse partielle aurait été possible ("président actuel", "dernier
+  recensement") — le modèle privilégie le refus dès qu'il ne peut pas
+  identifier avec certitude quelle valeur est "actuelle". C'est la
+  principale limite mise en évidence par l'évaluation.
+
+---
+
 ## Structure du projet
 
 ```

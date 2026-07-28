@@ -1,0 +1,727 @@
+{
+  "summary": {
+    "total": 17,
+    "correct": 12,
+    "accuracy_pct": 70.6,
+    "false_negatives": 2,
+    "false_positives": 0,
+    "fp_rate_pct": 0.0,
+    "avg_response_time_s": 2.41
+  },
+  "results": [
+    {
+      "id": 1,
+      "category": "Fait simple",
+      "question": "What is the capital of Madagascar?",
+      "in_scope": true,
+      "answer": "The capital of Madagascar is Antananarivo.  \nSource: [Introduction] | Chunk #3",
+      "refused": false,
+      "verdict": "✅  CORRECT",
+      "response_time_s": 5.28,
+      "sources": [
+        {
+          "chunk_id": 76,
+          "section": "Structure",
+          "type": "text",
+          "score": 0.016393
+        },
+        {
+          "chunk_id": 3,
+          "section": "Introduction",
+          "type": "text",
+          "score": 0.015873
+        },
+        {
+          "chunk_id": 9,
+          "section": "Etymology",
+          "type": "text",
+          "score": 0.014637
+        },
+        {
+          "chunk_id": 56,
+          "section": "Geography",
+          "type": "text",
+          "score": 0.014407
+        },
+        {
+          "chunk_id": 11,
+          "section": "Etymology",
+          "type": "text",
+          "score": 0.014359
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "Fait simple",
+      "question": "Quelle est la capitale de Madagascar ?",
+      "in_scope": true,
+      "answer": "La capitale de Madagascar est Antananarivo.  \nSource: [Introduction] | Chunk #3",
+      "refused": false,
+      "verdict": "✅  CORRECT",
+      "response_time_s": 3.33,
+      "sources": [
+        {
+          "chunk_id": 76,
+          "section": "Structure",
+          "type": "text",
+          "score": 0.016393
+        },
+        {
+          "chunk_id": 3,
+          "section": "Introduction",
+          "type": "text",
+          "score": 0.015873
+        },
+        {
+          "chunk_id": 9,
+          "section": "Etymology",
+          "type": "text",
+          "score": 0.014637
+        },
+        {
+          "chunk_id": 56,
+          "section": "Geography",
+          "type": "text",
+          "score": 0.014407
+        },
+        {
+          "chunk_id": 11,
+          "section": "Etymology",
+          "type": "text",
+          "score": 0.014359
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "Fait simple",
+      "question": "What are the official languages of Madagascar?",
+      "in_scope": true,
+      "answer": "The official languages of Madagascar are Malagasy and French. Source: [Languages] | Chunk #120, [Languages] | Chunk #117",
+      "refused": false,
+      "verdict": "✅  CORRECT",
+      "response_time_s": 1.62,
+      "sources": [
+        {
+          "chunk_id": 120,
+          "section": "Languages",
+          "type": "text",
+          "score": 0.016261
+        },
+        {
+          "chunk_id": 7,
+          "section": "Introduction",
+          "type": "text",
+          "score": 0.016009
+        },
+        {
+          "chunk_id": 117,
+          "section": "Languages",
+          "type": "text",
+          "score": 0.015877
+        },
+        {
+          "chunk_id": 119,
+          "section": "Languages",
+          "type": "text",
+          "score": 0.014929
+        },
+        {
+          "chunk_id": 127,
+          "section": "Religion",
+          "type": "text",
+          "score": 0.013516
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "category": "Chiffre précis",
+      "question": "What is the total area of Madagascar in square kilometres?",
+      "in_scope": true,
+      "answer": "The total area of Madagascar is 592,800 square kilometres. \n\nSource: [Geography] | Chunk #54",
+      "refused": false,
+      "verdict": "⚠️  ANSWERED (kw missing)",
+      "response_time_s": 1.96,
+      "sources": [
+        {
+          "chunk_id": 54,
+          "section": "Geography",
+          "type": "text",
+          "score": 0.016393
+        },
+        {
+          "chunk_id": 3,
+          "section": "Introduction",
+          "type": "text",
+          "score": 0.015399
+        },
+        {
+          "chunk_id": 9,
+          "section": "Etymology",
+          "type": "text",
+          "score": 0.013516
+        },
+        {
+          "chunk_id": 0,
+          "section": "Introduction",
+          "type": "table",
+          "score": 0.008065
+        },
+        {
+          "chunk_id": 134,
+          "section": "Health",
+          "type": "text",
+          "score": 0.008065
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "category": "Chiffre précis",
+      "question": "Quelle est la superficie de Madagascar en km² ?",
+      "in_scope": true,
+      "answer": "La superficie de Madagascar est de 592 800 kilomètres carrés. \n\nSource: [Geography] | Chunk #54",
+      "refused": false,
+      "verdict": "⚠️  ANSWERED (kw missing)",
+      "response_time_s": 2.78,
+      "sources": [
+        {
+          "chunk_id": 3,
+          "section": "Introduction",
+          "type": "text",
+          "score": 0.015749
+        },
+        {
+          "chunk_id": 9,
+          "section": "Etymology",
+          "type": "text",
+          "score": 0.013472
+        },
+        {
+          "chunk_id": 62,
+          "section": "Biodiversity and conservation",
+          "type": "text",
+          "score": 0.013371
+        },
+        {
+          "chunk_id": 54,
+          "section": "Geography",
+          "type": "text",
+          "score": 0.008197
+        },
+        {
+          "chunk_id": 134,
+          "section": "Health",
+          "type": "text",
+          "score": 0.008197
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "category": "Lecture de tableau",
+      "question": "How many administrative regions does Madagascar have?",
+      "in_scope": true,
+      "answer": "Madagascar is subdivided into 23 regions.  \nSource: [Administrative divisions] | Chunk #85",
+      "refused": false,
+      "verdict": "✅  CORRECT",
+      "response_time_s": 1.83,
+      "sources": [
+        {
+          "chunk_id": 85,
+          "section": "Administrative divisions",
+          "type": "text",
+          "score": 0.016393
+        },
+        {
+          "chunk_id": 76,
+          "section": "Structure",
+          "type": "text",
+          "score": 0.015165
+        },
+        {
+          "chunk_id": 105,
+          "section": "Infrastructure and media",
+          "type": "text",
+          "score": 0.014821
+        },
+        {
+          "chunk_id": 101,
+          "section": "Infrastructure and media",
+          "type": "text",
+          "score": 0.014786
+        },
+        {
+          "chunk_id": 45,
+          "section": "Independent state",
+          "type": "text",
+          "score": 0.013428
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "category": "Lecture de tableau",
+      "question": "What are the main ethnic groups of Madagascar?",
+      "in_scope": true,
+      "answer": "The main ethnic groups of Madagascar include the Merina, who form the largest Malagasy ethnic subgroup at approximately 26% of the population, and the Betsimisaraka, Tsimihety, and Sakalava, who are among the largest coastal ethnic subgroups. Additionally, there are Chinese, Indian, and Comoran minorities, as well as a small European (primarily French) populace. The Malagasy ethnic group as a whole forms over 90% of Madagascar's population and is typically divided into 18 ethnic subgroups. \n\nSource: [Ethnic groups] | Chunk #112, #113, #115",
+      "refused": false,
+      "verdict": "✅  CORRECT",
+      "response_time_s": 3.11,
+      "sources": [
+        {
+          "chunk_id": 112,
+          "section": "Ethnic groups",
+          "type": "text",
+          "score": 0.015772
+        },
+        {
+          "chunk_id": 5,
+          "section": "Introduction",
+          "type": "text",
+          "score": 0.015749
+        },
+        {
+          "chunk_id": 113,
+          "section": "Ethnic groups",
+          "type": "text",
+          "score": 0.01564
+        },
+        {
+          "chunk_id": 115,
+          "section": "Ethnic groups",
+          "type": "text",
+          "score": 0.014881
+        },
+        {
+          "chunk_id": 127,
+          "section": "Religion",
+          "type": "text",
+          "score": 0.014816
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "category": "Raisonnement multi-passages",
+      "question": "How did political power change in Madagascar between 2009 and 2014?",
+      "in_scope": true,
+      "answer": "In early 2009, opposition leader and then-mayor of Antananarivo, Andry Rajoelina, led a movement that resulted in the unconstitutional removal of President Marc Ravalomanana from power, an event widely condemned as a coup d'état. In March 2009, Rajoelina was declared by the Supreme Court as president of the High Transitional Authority, an interim governing body responsible for moving the country toward presidential elections. In 2010, a new constitution was adopted by referendum, establishing a Fourth Republic. Constitutional governance was restored in January 2014. \n\nSource: [Independent state] | Chunk #50",
+      "refused": false,
+      "verdict": "✅  CORRECT",
+      "response_time_s": 2.52,
+      "sources": [
+        {
+          "chunk_id": 77,
+          "section": "Politics",
+          "type": "text",
+          "score": 0.016393
+        },
+        {
+          "chunk_id": 6,
+          "section": "Introduction",
+          "type": "text",
+          "score": 0.016129
+        },
+        {
+          "chunk_id": 49,
+          "section": "Independent state",
+          "type": "text",
+          "score": 0.015275
+        },
+        {
+          "chunk_id": 48,
+          "section": "Independent state",
+          "type": "text",
+          "score": 0.015183
+        },
+        {
+          "chunk_id": 50,
+          "section": "Independent state",
+          "type": "text",
+          "score": 0.014835
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "category": "Raisonnement multi-passages",
+      "question": "What are the main economic sectors of Madagascar?",
+      "in_scope": true,
+      "answer": "The main economic sectors of Madagascar include agriculture, manufacturing, tourism, and the extractive industries. The agriculture sector constituted 29% of the GDP as of 2011, and the fishing sector represents US$800 million or 6% of GNP. Additionally, the textiles industry, fish and shellfish, vanilla, cloves, and other foodstuffs are significant for export revenue. \n\nSource: [Economy] | Chunk #91, [Natural resources and trade] | Chunk #99",
+      "refused": false,
+      "verdict": "✅  CORRECT",
+      "response_time_s": 2.39,
+      "sources": [
+        {
+          "chunk_id": 99,
+          "section": "Natural resources and trade",
+          "type": "text",
+          "score": 0.016133
+        },
+        {
+          "chunk_id": 98,
+          "section": "Natural resources and trade",
+          "type": "text",
+          "score": 0.015757
+        },
+        {
+          "chunk_id": 8,
+          "section": "Introduction",
+          "type": "text",
+          "score": 0.015059
+        },
+        {
+          "chunk_id": 93,
+          "section": "Economy",
+          "type": "text",
+          "score": 0.014662
+        },
+        {
+          "chunk_id": 91,
+          "section": "Economy",
+          "type": "text",
+          "score": 0.008197
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "category": "Ambiguïté temporelle",
+      "question": "Who is the current president of Madagascar?",
+      "in_scope": true,
+      "answer": "I cannot answer this question based on the available information from the Madagascar Wikipedia page.",
+      "refused": true,
+      "verdict": "❌  FALSE NEGATIVE",
+      "response_time_s": 1.5,
+      "sources": [
+        {
+          "chunk_id": 74,
+          "section": "Structure",
+          "type": "text",
+          "score": 0.016393
+        },
+        {
+          "chunk_id": 6,
+          "section": "Introduction",
+          "type": "text",
+          "score": 0.015877
+        },
+        {
+          "chunk_id": 51,
+          "section": "Independent state",
+          "type": "text",
+          "score": 0.015629
+        },
+        {
+          "chunk_id": 53,
+          "section": "Independent state",
+          "type": "text",
+          "score": 0.015417
+        },
+        {
+          "chunk_id": 50,
+          "section": "Independent state",
+          "type": "text",
+          "score": 0.013892
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "category": "Ambiguïté temporelle",
+      "question": "What is the poverty rate in Madagascar?",
+      "in_scope": true,
+      "answer": "The poverty rate in Madagascar was 92% in 2017. As of 2025, poverty affected approximately 80% of the population based on a daily income threshold of $2.15 (2017 PPP). \n\nSource: [Economy] | Chunk #94, Chunk #95",
+      "refused": false,
+      "verdict": "✅  CORRECT",
+      "response_time_s": 2.36,
+      "sources": [
+        {
+          "chunk_id": 133,
+          "section": "Health",
+          "type": "text",
+          "score": 0.016009
+        },
+        {
+          "chunk_id": 94,
+          "section": "Economy",
+          "type": "text",
+          "score": 0.015877
+        },
+        {
+          "chunk_id": 90,
+          "section": "Economy",
+          "type": "text",
+          "score": 0.015629
+        },
+        {
+          "chunk_id": 95,
+          "section": "Economy",
+          "type": "text",
+          "score": 0.015443
+        },
+        {
+          "chunk_id": 134,
+          "section": "Health",
+          "type": "text",
+          "score": 0.014979
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "category": "Ambiguïté temporelle",
+      "question": "What was the population of Madagascar in the most recent census in the article?",
+      "in_scope": true,
+      "answer": "I cannot answer this question based on the available information from the Madagascar Wikipedia page.",
+      "refused": true,
+      "verdict": "❌  FALSE NEGATIVE",
+      "response_time_s": 1.54,
+      "sources": [
+        {
+          "chunk_id": 111,
+          "section": "Demographics",
+          "type": "text",
+          "score": 0.016133
+        },
+        {
+          "chunk_id": 94,
+          "section": "Economy",
+          "type": "text",
+          "score": 0.012989
+        },
+        {
+          "chunk_id": 122,
+          "section": "Religion",
+          "type": "text",
+          "score": 0.008197
+        },
+        {
+          "chunk_id": 186,
+          "section": "Cuisine",
+          "type": "text",
+          "score": 0.008065
+        },
+        {
+          "chunk_id": 134,
+          "section": "Health",
+          "type": "text",
+          "score": 0.008065
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "category": "Hors périmètre (piège)",
+      "question": "What is the national dish of Madagascar?",
+      "in_scope": false,
+      "answer": "I cannot answer this question based on the available information from the Madagascar Wikipedia page.",
+      "refused": true,
+      "verdict": "✅  CORRECTLY REFUSED",
+      "response_time_s": 2.73,
+      "sources": [
+        {
+          "chunk_id": 9,
+          "section": "Etymology",
+          "type": "text",
+          "score": 0.013825
+        },
+        {
+          "chunk_id": 143,
+          "section": "Culture",
+          "type": "text",
+          "score": 0.013099
+        },
+        {
+          "chunk_id": 3,
+          "section": "Introduction",
+          "type": "text",
+          "score": 0.01266
+        },
+        {
+          "chunk_id": 154,
+          "section": "Cuisine",
+          "type": "text",
+          "score": 0.008197
+        },
+        {
+          "chunk_id": 12,
+          "section": "Etymology",
+          "type": "text",
+          "score": 0.008197
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "category": "Hors périmètre (piège)",
+      "question": "What is the current USD to Malagasy Ariary exchange rate?",
+      "in_scope": false,
+      "answer": "I cannot answer this question based on the available information from the Madagascar Wikipedia page.",
+      "refused": true,
+      "verdict": "✅  CORRECTLY REFUSED",
+      "response_time_s": 1.6,
+      "sources": [
+        {
+          "chunk_id": 9,
+          "section": "Etymology",
+          "type": "text",
+          "score": 0.014187
+        },
+        {
+          "chunk_id": 0,
+          "section": "Introduction",
+          "type": "table",
+          "score": 0.008197
+        },
+        {
+          "chunk_id": 12,
+          "section": "Etymology",
+          "type": "text",
+          "score": 0.008197
+        },
+        {
+          "chunk_id": 90,
+          "section": "Economy",
+          "type": "text",
+          "score": 0.008065
+        },
+        {
+          "chunk_id": 134,
+          "section": "Health",
+          "type": "text",
+          "score": 0.008065
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "category": "Hors périmètre (piège)",
+      "question": "Who directed the DreamWorks animated film Madagascar?",
+      "in_scope": false,
+      "answer": "I cannot answer this question based on the available information from the Madagascar Wikipedia page.",
+      "refused": true,
+      "verdict": "✅  CORRECTLY REFUSED",
+      "response_time_s": 1.55,
+      "sources": [
+        {
+          "chunk_id": 74,
+          "section": "Structure",
+          "type": "text",
+          "score": 0.014042
+        },
+        {
+          "chunk_id": 146,
+          "section": "Arts",
+          "type": "text",
+          "score": 0.008197
+        },
+        {
+          "chunk_id": 131,
+          "section": "Health",
+          "type": "text",
+          "score": 0.008197
+        },
+        {
+          "chunk_id": 170,
+          "section": "Cuisine",
+          "type": "text",
+          "score": 0.008065
+        },
+        {
+          "chunk_id": 35,
+          "section": "19th century and the Kingdom of Madagascar",
+          "type": "text",
+          "score": 0.008065
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "category": "Partiellement couverte",
+      "question": "What environmental challenges does Madagascar face?",
+      "in_scope": true,
+      "answer": "Madagascar faces several environmental challenges, including the need to adapt to and avert the consequences of climate change, which would require spending 15% of its GDP. The country has also lost more than 90% of its original forest due to human activities such as slash-and-burn agriculture, increased cattle herding, reliance on charcoal for cooking, and the cultivation of coffee as a cash crop. Additionally, Madagascar is experiencing issues related to undernourishment and hunger, with more than one million people in southern Madagascar struggling to get enough to eat, potentially leading to the country's first famine caused by climate change. The country is also water-stressed, with climate shocks and infrastructure gaps exacerbating the crisis. \n\nSources: [Climate] | Chunk #61, [Health] | Chunk #134, [Biodiversity and conservation] | Chunk #68, [Economy] | Chunk #95",
+      "refused": false,
+      "verdict": "⚠️  ANSWERED (kw missing)",
+      "response_time_s": 2.66,
+      "sources": [
+        {
+          "chunk_id": 178,
+          "section": "Cuisine",
+          "type": "text",
+          "score": 0.015388
+        },
+        {
+          "chunk_id": 61,
+          "section": "Climate",
+          "type": "text",
+          "score": 0.01469
+        },
+        {
+          "chunk_id": 134,
+          "section": "Health",
+          "type": "text",
+          "score": 0.014394
+        },
+        {
+          "chunk_id": 68,
+          "section": "Biodiversity and conservation",
+          "type": "text",
+          "score": 0.008197
+        },
+        {
+          "chunk_id": 95,
+          "section": "Economy",
+          "type": "text",
+          "score": 0.008065
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "category": "Partiellement couverte",
+      "question": "What recent political events occurred in Madagascar around 2023-2025?",
+      "in_scope": true,
+      "answer": "In 2025, a series of mass protests in Madagascar resulted in a military coup and the installation of Michael Randrianirina as president of a military junta. \n\nSource: [Introduction] | Chunk #6",
+      "refused": false,
+      "verdict": "✅  CORRECT",
+      "response_time_s": 2.23,
+      "sources": [
+        {
+          "chunk_id": 77,
+          "section": "Politics",
+          "type": "text",
+          "score": 0.01555
+        },
+        {
+          "chunk_id": 6,
+          "section": "Introduction",
+          "type": "text",
+          "score": 0.015399
+        },
+        {
+          "chunk_id": 78,
+          "section": "Politics",
+          "type": "text",
+          "score": 0.014731
+        },
+        {
+          "chunk_id": 45,
+          "section": "Independent state",
+          "type": "text",
+          "score": 0.014391
+        },
+        {
+          "chunk_id": 134,
+          "section": "Health",
+          "type": "text",
+          "score": 0.008197
+        }
+      ]
+    }
+  ]
+}

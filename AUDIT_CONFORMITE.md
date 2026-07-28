@@ -14,7 +14,7 @@ exécutant les tests et une partie du pipeline.
 | 4 | Indexation & Retrieval | Conforme (re-ranking optionnel non fait) |
 | 5 | Génération (grounding, citation, refus) | Conforme |
 | 6 | Cross-lingual FR/EN | Corrigé pendant l'audit |
-| 7 | Évaluation (≥15 questions + résultats) | Harness conforme, résultats non exécutés |
+| 7 | Évaluation (≥15 questions + résultats) | Conforme, résultats exécutés |
 | 8 | Livrables (README, rapport de réflexion) | Corrigé pendant l'audit |
 
 ## Détail
