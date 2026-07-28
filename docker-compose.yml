@@ -1,0 +1,89 @@
+version: "3.9"
+
+services:
+  # ── RAG API ────────────────────────────────────────────────────────────
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: rag-madagascar:latest
+    container_name: rag_madagascar_api
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - INDEX_PATH=/app/index
+    volumes:
+      - rag_data:/app/data     # cached HTML + chunks JSON
+      - rag_index:/app/index   # FAISS + BM25 + chunks JSON
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  # ── One-shot index builder ──────────────────────────────────────────────
+  # Usage: docker compose run --rm indexer
+  indexer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: rag-madagascar:latest
+    container_name: rag_madagascar_indexer
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - INDEX_PATH=/app/index
+    volumes:
+      - rag_data:/app/data
+      - rag_index:/app/index
+    command: >
+      python -c "
+      import os, openai
+      from src.application.index_usecase import BuildIndexUseCase
+      from src.infrastructure.loader import WikipediaLoader
+      from src.infrastructure.chunker import WikipediaChunker
+      from src.infrastructure.embedder import OpenAIEmbedder
+      from src.infrastructure.hybrid_retriever import HybridRetriever
+      client = openai.OpenAI(api_key=os.environ['OPENAI_API_KEY'])
+      retriever = HybridRetriever(index_path='/app/index')
+      BuildIndexUseCase(
+          loader=WikipediaLoader(),
+          chunker=WikipediaChunker(),
+          embedder=OpenAIEmbedder(client),
+          retriever=retriever,
+          index_path='/app/index',
+      ).execute(force_rebuild=False)
+      print('Index built.')
+      "
+    profiles:
+      - tools
+
+  # ── Test runner ─────────────────────────────────────────────────────────
+  # Usage: docker compose run --rm tests
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    image: rag-madagascar:builder
+    container_name: rag_madagascar_tests
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-dummy}
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: >
+      sh -c "pip install --no-cache-dir pytest pytest-cov &&
+             pytest tests/unit/ -v --tb=short --cov=src --cov-report=term-missing"
+    profiles:
+      - tools
+
+volumes:
+  rag_data:
+    name: rag_madagascar_data
+  rag_index:
+    name: rag_madagascar_index
