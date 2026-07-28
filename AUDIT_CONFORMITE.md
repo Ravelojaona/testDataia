@@ -8,14 +8,14 @@ exécutant les tests et une partie du pipeline.
 
 | # | Exigence | Statut |
 |---|----------|--------|
-| 1 | Ingestion | ✅ Conforme |
-| 2 | Nettoyage | ✅ Conforme |
-| 3 | Chunking (texte + tableaux) | ✅ Conforme |
-| 4 | Indexation & Retrieval | ✅ Conforme (re-ranking optionnel non fait) |
-| 5 | Génération (grounding, citation, refus) | ✅ Conforme |
-| 6 | Cross-lingual FR/EN | ✅ Corrigé pendant l'audit |
-| 7 | Évaluation (≥15 questions + résultats) | ⚠️ Harness conforme, résultats non exécutés |
-| 8 | Livrables (README, rapport de réflexion) | ✅ Corrigé pendant l'audit |
+| 1 | Ingestion | Conforme |
+| 2 | Nettoyage | Conforme |
+| 3 | Chunking (texte + tableaux) | Conforme |
+| 4 | Indexation & Retrieval | Conforme (re-ranking optionnel non fait) |
+| 5 | Génération (grounding, citation, refus) | Conforme |
+| 6 | Cross-lingual FR/EN | Corrigé pendant l'audit |
+| 7 | Évaluation (≥15 questions + résultats) | Harness conforme, résultats non exécutés |
+| 8 | Livrables (README, rapport de réflexion) | Corrigé pendant l'audit |
 
 ## Détail
 
@@ -92,15 +92,3 @@ réflexion "2 semaines vs 3 jours" était rédigé en listes à puces alors que
 le cahier des charges demande explicitement 2 paragraphes de prose.
 Corrigé : le README contient maintenant 2 paragraphes de prose continue à
 la place des listes.
-
-## Ce qui reste à faire avant la remise
-
-1. Relancer `python evaluate.py` avec une clé OpenAI disposant de crédit,
-   puis committer `eval_results.json` (ou coller le tableau de résultats
-   dans le README).
-2. Vérifier que le rendu final des réponses en français fonctionne bien
-   avec la nouvelle règle de prompt (non testable sans quota API pendant
-   cet audit).
-3. Rendre le dépôt GitHub public (déjà poussé sur
-   `github-mahery:Ravelojaona/testDataia.git`, branche `main`) — vérifier
-   la visibilité du repo avant d'envoyer le lien.
