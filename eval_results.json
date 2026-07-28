@@ -1,12 +1,12 @@
 {
   "summary": {
     "total": 17,
-    "correct": 12,
-    "accuracy_pct": 70.6,
-    "false_negatives": 2,
+    "correct": 13,
+    "accuracy_pct": 76.5,
+    "false_negatives": 1,
     "false_positives": 0,
     "fp_rate_pct": 0.0,
-    "avg_response_time_s": 2.41
+    "avg_response_time_s": 2.36
   },
   "results": [
     {
@@ -14,10 +14,10 @@
       "category": "Fait simple",
       "question": "What is the capital of Madagascar?",
       "in_scope": true,
-      "answer": "The capital of Madagascar is Antananarivo.  \nSource: [Introduction] | Chunk #3",
+      "answer": "The capital of Madagascar is Antananarivo. \n\nSource: [Introduction] | Chunk #3",
       "refused": false,
       "verdict": "✅  CORRECT",
-      "response_time_s": 5.28,
+      "response_time_s": 6.41,
       "sources": [
         {
           "chunk_id": 76,
@@ -59,7 +59,7 @@
       "answer": "La capitale de Madagascar est Antananarivo.  \nSource: [Introduction] | Chunk #3",
       "refused": false,
       "verdict": "✅  CORRECT",
-      "response_time_s": 3.33,
+      "response_time_s": 2.6,
       "sources": [
         {
           "chunk_id": 76,
@@ -98,10 +98,10 @@
       "category": "Fait simple",
       "question": "What are the official languages of Madagascar?",
       "in_scope": true,
-      "answer": "The official languages of Madagascar are Malagasy and French. Source: [Languages] | Chunk #120, [Languages] | Chunk #117",
+      "answer": "The official languages of Madagascar are Malagasy and French. Source: [Languages] | Chunk #117",
       "refused": false,
       "verdict": "✅  CORRECT",
-      "response_time_s": 1.62,
+      "response_time_s": 1.6,
       "sources": [
         {
           "chunk_id": 120,
@@ -140,10 +140,10 @@
       "category": "Chiffre précis",
       "question": "What is the total area of Madagascar in square kilometres?",
       "in_scope": true,
-      "answer": "The total area of Madagascar is 592,800 square kilometres. \n\nSource: [Geography] | Chunk #54",
+      "answer": "The total area of Madagascar is 592,796 square kilometres. \n\nSource: [Introduction] | Chunk #0",
       "refused": false,
       "verdict": "⚠️  ANSWERED (kw missing)",
-      "response_time_s": 1.96,
+      "response_time_s": 1.87,
       "sources": [
         {
           "chunk_id": 54,
@@ -182,10 +182,10 @@
       "category": "Chiffre précis",
       "question": "Quelle est la superficie de Madagascar en km² ?",
       "in_scope": true,
-      "answer": "La superficie de Madagascar est de 592 800 kilomètres carrés. \n\nSource: [Geography] | Chunk #54",
+      "answer": "La superficie de Madagascar est de 592 800 kilomètres carrés.  \nSource: [Geography] | Chunk #54",
       "refused": false,
       "verdict": "⚠️  ANSWERED (kw missing)",
-      "response_time_s": 2.78,
+      "response_time_s": 3.19,
       "sources": [
         {
           "chunk_id": 3,
@@ -224,10 +224,10 @@
       "category": "Lecture de tableau",
       "question": "How many administrative regions does Madagascar have?",
       "in_scope": true,
-      "answer": "Madagascar is subdivided into 23 regions.  \nSource: [Administrative divisions] | Chunk #85",
+      "answer": "Madagascar is subdivided into 23 regions. \n\nSource: [Administrative divisions] | Chunk #85",
       "refused": false,
       "verdict": "✅  CORRECT",
-      "response_time_s": 1.83,
+      "response_time_s": 1.76,
       "sources": [
         {
           "chunk_id": 85,
@@ -266,10 +266,10 @@
       "category": "Lecture de tableau",
       "question": "What are the main ethnic groups of Madagascar?",
       "in_scope": true,
-      "answer": "The main ethnic groups of Madagascar include the Merina, who form the largest Malagasy ethnic subgroup at approximately 26% of the population, and the Betsimisaraka, Tsimihety, and Sakalava, who are among the largest coastal ethnic subgroups. Additionally, there are Chinese, Indian, and Comoran minorities, as well as a small European (primarily French) populace. The Malagasy ethnic group as a whole forms over 90% of Madagascar's population and is typically divided into 18 ethnic subgroups. \n\nSource: [Ethnic groups] | Chunk #112, #113, #115",
+      "answer": "The main ethnic groups of Madagascar include the Merina, who form the largest Malagasy ethnic subgroup at approximately 26% of the population, and the coastal ethnic subgroups such as the Betsimisaraka (14.9%) and the Tsimihety and Sakalava (6% each). Additionally, there are Chinese, Indian, and Comoran minorities, as well as a small European (primarily French) populace. The Malagasy ethnic group as a whole forms over 90% of Madagascar's population and is typically divided into 18 ethnic subgroups. \n\nSource: [Ethnic groups] | Chunk #112, #113, #115",
       "refused": false,
       "verdict": "✅  CORRECT",
-      "response_time_s": 3.11,
+      "response_time_s": 2.86,
       "sources": [
         {
           "chunk_id": 112,
@@ -308,10 +308,10 @@
       "category": "Raisonnement multi-passages",
       "question": "How did political power change in Madagascar between 2009 and 2014?",
       "in_scope": true,
-      "answer": "In early 2009, opposition leader and then-mayor of Antananarivo, Andry Rajoelina, led a movement that resulted in the unconstitutional removal of President Marc Ravalomanana from power, an event widely condemned as a coup d'état. In March 2009, Rajoelina was declared by the Supreme Court as president of the High Transitional Authority, an interim governing body responsible for moving the country toward presidential elections. In 2010, a new constitution was adopted by referendum, establishing a Fourth Republic. Constitutional governance was restored in January 2014. \n\nSource: [Independent state] | Chunk #50",
+      "answer": "In early 2009, opposition leader and then-mayor of Antananarivo, Andry Rajoelina, led a movement that resulted in the unconstitutional removal of President Marc Ravalomanana from power, an event widely condemned as a coup d'état. In March 2009, Rajoelina was declared by the Supreme Court as president of the High Transitional Authority, an interim governing body tasked with moving the country toward presidential elections. In 2010, a new constitution was adopted by referendum, establishing a Fourth Republic. Constitutional governance was restored in January 2014, marking the end of the transitional period. \n\nSource: [Independent state] | Chunk #50",
       "refused": false,
       "verdict": "✅  CORRECT",
-      "response_time_s": 2.52,
+      "response_time_s": 2.36,
       "sources": [
         {
           "chunk_id": 77,
@@ -353,7 +353,7 @@
       "answer": "The main economic sectors of Madagascar include agriculture, manufacturing, tourism, and the extractive industries. The agriculture sector constituted 29% of the GDP as of 2011, and the fishing sector represents US$800 million or 6% of GNP. Additionally, the textiles industry, fish and shellfish, vanilla, cloves, and other foodstuffs are significant for export revenue. \n\nSource: [Economy] | Chunk #91, [Natural resources and trade] | Chunk #99",
       "refused": false,
       "verdict": "✅  CORRECT",
-      "response_time_s": 2.39,
+      "response_time_s": 2.22,
       "sources": [
         {
           "chunk_id": 99,
@@ -392,10 +392,10 @@
       "category": "Ambiguïté temporelle",
       "question": "Who is the current president of Madagascar?",
       "in_scope": true,
-      "answer": "I cannot answer this question based on the available information from the Madagascar Wikipedia page.",
-      "refused": true,
-      "verdict": "❌  FALSE NEGATIVE",
-      "response_time_s": 1.5,
+      "answer": "The current president of Madagascar is Colonel Michael Randrianirina, who was sworn in on 17 October 2025. \n\nSource: [Independent state] | Chunk #53",
+      "refused": false,
+      "verdict": "✅  CORRECT",
+      "response_time_s": 1.71,
       "sources": [
         {
           "chunk_id": 74,
@@ -434,10 +434,10 @@
       "category": "Ambiguïté temporelle",
       "question": "What is the poverty rate in Madagascar?",
       "in_scope": true,
-      "answer": "The poverty rate in Madagascar was 92% in 2017. As of 2025, poverty affected approximately 80% of the population based on a daily income threshold of $2.15 (2017 PPP). \n\nSource: [Economy] | Chunk #94, Chunk #95",
+      "answer": "As of 2025, poverty affected approximately 80% of Madagascar's population, based on a daily income threshold of $2.15 (2017 PPP). In 2017, poverty affected 92% of the population. \n\nSource: [Economy] | Chunk #95, Chunk #94",
       "refused": false,
       "verdict": "✅  CORRECT",
-      "response_time_s": 2.36,
+      "response_time_s": 1.98,
       "sources": [
         {
           "chunk_id": 133,
@@ -479,7 +479,7 @@
       "answer": "I cannot answer this question based on the available information from the Madagascar Wikipedia page.",
       "refused": true,
       "verdict": "❌  FALSE NEGATIVE",
-      "response_time_s": 1.54,
+      "response_time_s": 1.89,
       "sources": [
         {
           "chunk_id": 111,
@@ -521,7 +521,7 @@
       "answer": "I cannot answer this question based on the available information from the Madagascar Wikipedia page.",
       "refused": true,
       "verdict": "✅  CORRECTLY REFUSED",
-      "response_time_s": 2.73,
+      "response_time_s": 1.57,
       "sources": [
         {
           "chunk_id": 9,
@@ -563,7 +563,7 @@
       "answer": "I cannot answer this question based on the available information from the Madagascar Wikipedia page.",
       "refused": true,
       "verdict": "✅  CORRECTLY REFUSED",
-      "response_time_s": 1.6,
+      "response_time_s": 1.87,
       "sources": [
         {
           "chunk_id": 9,
@@ -605,7 +605,7 @@
       "answer": "I cannot answer this question based on the available information from the Madagascar Wikipedia page.",
       "refused": true,
       "verdict": "✅  CORRECTLY REFUSED",
-      "response_time_s": 1.55,
+      "response_time_s": 1.52,
       "sources": [
         {
           "chunk_id": 74,
@@ -644,10 +644,10 @@
       "category": "Partiellement couverte",
       "question": "What environmental challenges does Madagascar face?",
       "in_scope": true,
-      "answer": "Madagascar faces several environmental challenges, including the need to adapt to and avert the consequences of climate change, which would require spending 15% of its GDP. The country has also lost more than 90% of its original forest due to human activities such as slash-and-burn agriculture, increased cattle herding, reliance on charcoal for cooking, and the cultivation of coffee as a cash crop. Additionally, Madagascar is experiencing issues related to undernourishment and hunger, with more than one million people in southern Madagascar struggling to get enough to eat, potentially leading to the country's first famine caused by climate change. The country is also water-stressed, with climate shocks and infrastructure gaps exacerbating the crisis. \n\nSources: [Climate] | Chunk #61, [Health] | Chunk #134, [Biodiversity and conservation] | Chunk #68, [Economy] | Chunk #95",
+      "answer": "Madagascar faces several environmental challenges, including:\n\n1. The need to adapt to and avert the environmental consequences of climate change, which would require spending 15% of its GDP. (Source: Climate | Chunk #61)\n2. Endangerment of its varied fauna and flora due to human activity, with more than 90% of its original forest lost since the arrival of humans. This loss is largely due to traditional slash-and-burn agriculture, increased cattle herding, reliance on charcoal for cooking, and the prominence of coffee as a cash crop. (Source: Biodiversity and conservation | Chunk #68)\n3. The potential for the country's first famine caused by climate change, affecting more than one million people in southern Madagascar in 2021. (Source: Health | Chunk #134)\n\nThese challenges are compounded by issues such as poverty and food insecurity. (Source: Economy | Chunk #95)",
       "refused": false,
       "verdict": "⚠️  ANSWERED (kw missing)",
-      "response_time_s": 2.66,
+      "response_time_s": 2.94,
       "sources": [
         {
           "chunk_id": 178,
@@ -689,7 +689,7 @@
       "answer": "In 2025, a series of mass protests in Madagascar resulted in a military coup and the installation of Michael Randrianirina as president of a military junta. \n\nSource: [Introduction] | Chunk #6",
       "refused": false,
       "verdict": "✅  CORRECT",
-      "response_time_s": 2.23,
+      "response_time_s": 1.86,
       "sources": [
         {
           "chunk_id": 77,

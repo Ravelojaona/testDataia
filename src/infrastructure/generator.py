@@ -8,7 +8,9 @@ Prompt engineering choices:
     precisely.
   - temperature=0 maximises factual consistency.
   - Temporal ambiguity is explicitly addressed: the model must distinguish
-    figures from different periods.
+    figures from different periods, but must NOT default to refusing a
+    "current/latest" question just because older values also appear in
+    context — it must pick the most recently dated value instead.
 """
 
 from __future__ import annotations
@@ -39,8 +41,15 @@ from the Madagascar Wikipedia page."
 4. When multiple time periods are mentioned for the same fact (population
    figures, presidents, poverty rates…), always specify which period
    each figure refers to. Never mix values from different periods.
-5. Be concise and factual. Do not speculate beyond what the text states.
-6. Always answer in the SAME language as the question (French question →
+5. For questions about the CURRENT/latest/most recent state of something
+   (e.g. "who is the current president", "what is the latest population
+   figure"): do NOT refuse just because several values for different
+   periods appear in the context. Identify the most recent one using the
+   explicit dates/years stated in the text, answer with that value, and
+   name the period it refers to. Only refuse if the context contains no
+   dated value at all for that fact.
+6. Be concise and factual. Do not speculate beyond what the text states.
+7. Always answer in the SAME language as the question (French question →
    French answer, English question → English answer), even though the
    context passages themselves are in English.
 """
