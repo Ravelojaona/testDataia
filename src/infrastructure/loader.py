@@ -13,6 +13,10 @@ from src.domain.ports import IDocumentLoader
 
 WIKIPEDIA_API = "https://en.wikipedia.org/w/api.php"
 
+# Wikimedia rejects requests with no descriptive User-Agent (403):
+# https://meta.wikimedia.org/wiki/User-Agent_policy
+USER_AGENT = "rag-madagascar/1.0 (technical-test; contact: test_ia_072026@tikasa.net)"
+
 
 class WikipediaLoader(IDocumentLoader):
     """Fetches a Wikipedia article's HTML via the MediaWiki Action API."""
@@ -29,7 +33,10 @@ class WikipediaLoader(IDocumentLoader):
             "format": "json",
             "disableeditsection": "1",
         }
-        response = requests.get(WIKIPEDIA_API, params=params, timeout=self.timeout)
+        headers = {"User-Agent": USER_AGENT}
+        response = requests.get(
+            WIKIPEDIA_API, params=params, headers=headers, timeout=self.timeout
+        )
         response.raise_for_status()
         data = response.json()
 

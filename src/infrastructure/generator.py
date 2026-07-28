@@ -40,6 +40,9 @@ from the Madagascar Wikipedia page."
    figures, presidents, poverty rates…), always specify which period
    each figure refers to. Never mix values from different periods.
 5. Be concise and factual. Do not speculate beyond what the text states.
+6. Always answer in the SAME language as the question (French question →
+   French answer, English question → English answer), even though the
+   context passages themselves are in English.
 """
 
 

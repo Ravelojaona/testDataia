@@ -178,18 +178,9 @@ rag_madagascar/
 
 ## Réflexion — 2 semaines vs 3 jours
 
-**Améliorations techniques :**
-- Re-ranker cross-encoder (`ms-marco-MiniLM`) pour affiner le top-k avant génération.
-- Parsing des tableaux avec gestion `rowspan`/`colspan`.
-- Chunking sémantique aux frontières naturelles du discours.
-- LLM-as-judge pour l'évaluation automatisée (pas seulement détection de mots-clés).
-- Cache Redis pour les embeddings de requêtes fréquentes.
+Avec deux semaines plutôt que trois jours, l'effort irait d'abord vers la fiabilité de la mesure plutôt que vers de nouvelles fonctionnalités. L'évaluation actuelle repose sur une correspondance de mots-clés et sur la détection d'une phrase de refus fixe, ce qui est fragile dès que le modèle reformule légèrement sa réponse ou répond en français ; je remplacerais cette approche par un LLM-as-judge comparant chaque réponse à une réponse de référence, et j'ajouterais un re-ranker cross-encoder (`ms-marco-MiniLM`) pour vérifier si le gain de précision sur le top-k justifie la latence supplémentaire. Je traiterais aussi deux limites connues du pipeline : le parsing des tableaux avec `rowspan`/`colspan`, qui dégrade actuellement le rendu Markdown de certains tableaux administratifs, et l'agrégation explicite des valeurs historiques (population, présidents) plutôt que la simple citation de passages disjoints.
 
-**Améliorations produit :**
-- Interface web (Streamlit/Gradio) pour les tests non-techniques.
-- Monitoring OpenTelemetry des latences et coûts API.
-- Pipeline CI/CD avec tests automatiques à chaque commit.
-- Support de sources multiples (plusieurs pages Wikipedia).
+Sur le plan produit, je pousserais le système vers un usage réel plutôt qu'un simple harness de test : une interface web légère (Streamlit) pour permettre des tests non-techniques, un monitoring des coûts et latences API en production, et un pipeline CI/CD exécutant les tests unitaires et un sous-ensemble de l'évaluation à chaque commit pour détecter les régressions de qualité de réponse, pas seulement les régressions de code. J'envisagerais enfin d'étendre le périmètre à plusieurs pages Wikipedia liées (par exemple les pages des régions administratives), ce qui obligerait à revoir la stratégie de chunking et de citation pour gérer plusieurs sources distinctes sans ambiguïté.
 
 ---
 
