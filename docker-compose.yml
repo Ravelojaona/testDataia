@@ -17,6 +17,7 @@ services:
     volumes:
       - rag_data:/app/data     # cached HTML + chunks JSON
       - rag_index:/app/index   # FAISS + BM25 + chunks JSON
+      - hf_cache:/home/raguser/.cache/huggingface  # cross-encoder weights
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
@@ -87,3 +88,5 @@ volumes:
     name: rag_madagascar_data
   rag_index:
     name: rag_madagascar_index
+  hf_cache:
+    name: rag_madagascar_hf_cache

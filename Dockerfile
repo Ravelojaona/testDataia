@@ -36,7 +36,7 @@ COPY src/ ./src/
 COPY evaluate.py .
 COPY pyproject.toml .
 
-# Writable volumes for persistent data and index
+# Writable volumes for persistent data, index, and cross-encoder weights
 VOLUME ["/app/data", "/app/index"]
 
 # Non-root user for security

@@ -124,3 +124,71 @@ class TestQueryUseCase:
     def test_source_scores_enriched(self, use_case, mock_search_result):
         result = use_case.execute("What is Madagascar?")
         assert result.sources[0].score == pytest.approx(mock_search_result.score)
+
+
+# ---------------------------------------------------------------------------
+# Reranker wiring
+# ---------------------------------------------------------------------------
+
+class TestRerankerWiring:
+    def test_no_reranker_retrieves_exactly_top_k(self, use_case):
+        use_case.execute("Question?", top_k=3)
+        assert use_case._retriever.retrieve.call_args[1]["top_k"] == 3
+
+    def test_reranker_pulls_wider_candidate_pool(self, mock_search_result, mock_query_result):
+        retriever = MagicMock()
+        retriever.is_ready.return_value = True
+        retriever.retrieve.return_value = [mock_search_result]
+
+        embedder = MagicMock()
+        embedder.embed_query.return_value = np.zeros(8, dtype=np.float32)
+
+        generator = MagicMock()
+        generator.generate.return_value = mock_query_result
+
+        reranker = MagicMock()
+        reranker.rerank.return_value = [mock_search_result]
+
+        uc = QueryUseCase(
+            retriever=retriever,
+            embedder=embedder,
+            generator=generator,
+            reranker=reranker,
+            top_k=3,
+            candidate_pool_size=20,
+        )
+        uc.execute("Question?")
+
+        assert retriever.retrieve.call_args[1]["top_k"] == 20
+        reranker.rerank.assert_called_once()
+        assert reranker.rerank.call_args[0][2] == 3
+
+    def test_reranker_output_feeds_generator(self, mock_chunk, mock_query_result):
+        other_chunk = Chunk(id=1, type=ChunkType.TEXT, section="Demographics",
+                             content="Population figures.", token_count=5)
+        result_a = SearchResult(chunk=mock_chunk, score=0.1, rank=1)
+        result_b = SearchResult(chunk=other_chunk, score=0.9, rank=1)
+
+        retriever = MagicMock()
+        retriever.is_ready.return_value = True
+        retriever.retrieve.return_value = [result_a, result_b]
+
+        embedder = MagicMock()
+        embedder.embed_query.return_value = np.zeros(8, dtype=np.float32)
+
+        generator = MagicMock()
+        generator.generate.return_value = mock_query_result
+
+        reranker = MagicMock()
+        # Reranker flips the order — only result_b should reach the generator.
+        reranker.rerank.return_value = [result_b]
+
+        uc = QueryUseCase(
+            retriever=retriever, embedder=embedder, generator=generator,
+            reranker=reranker, top_k=1,
+        )
+        uc.execute("Question?")
+
+        chunks_arg = generator.generate.call_args[0][1]
+        assert len(chunks_arg) == 1
+        assert chunks_arg[0].id == other_chunk.id

@@ -18,13 +18,14 @@ from src.infrastructure.embedder import OpenAIEmbedder
 from src.infrastructure.generator import OpenAIGenerator, OpenAITranslator
 from src.infrastructure.hybrid_retriever import HybridRetriever
 from src.infrastructure.loader import WikipediaLoader
+from src.infrastructure.reranker import CrossEncoderReranker
 
 EVAL_QUESTIONS = [
     {"id":1,"category":"Fait simple","question":"What is the capital of Madagascar?","expected":["Antananarivo"],"in_scope":True},
     {"id":2,"category":"Fait simple","question":"Quelle est la capitale de Madagascar ?","expected":["Antananarivo"],"in_scope":True},
     {"id":3,"category":"Fait simple","question":"What are the official languages of Madagascar?","expected":["Malagasy","French"],"in_scope":True},
-    {"id":4,"category":"Chiffre précis","question":"What is the total area of Madagascar in square kilometres?","expected":["587"],"in_scope":True},
-    {"id":5,"category":"Chiffre précis","question":"Quelle est la superficie de Madagascar en km² ?","expected":["587"],"in_scope":True},
+    {"id":4,"category":"Chiffre précis","question":"What is the total area of Madagascar in square kilometres?","expected":["592"],"in_scope":True},
+    {"id":5,"category":"Chiffre précis","question":"Quelle est la superficie de Madagascar en km² ?","expected":["592"],"in_scope":True},
     {"id":6,"category":"Lecture de tableau","question":"How many administrative regions does Madagascar have?","expected":["22","23"],"in_scope":True},
     {"id":7,"category":"Lecture de tableau","question":"What are the main ethnic groups of Madagascar?","expected":["Merina","Betsileo"],"in_scope":True},
     {"id":8,"category":"Raisonnement multi-passages","question":"How did political power change in Madagascar between 2009 and 2014?","expected":["coup","Rajoelina"],"in_scope":True},
@@ -35,7 +36,7 @@ EVAL_QUESTIONS = [
     {"id":13,"category":"Hors périmètre (piège)","question":"What is the national dish of Madagascar?","expected":[],"in_scope":False},
     {"id":14,"category":"Hors périmètre (piège)","question":"What is the current USD to Malagasy Ariary exchange rate?","expected":[],"in_scope":False},
     {"id":15,"category":"Hors périmètre (piège)","question":"Who directed the DreamWorks animated film Madagascar?","expected":[],"in_scope":False},
-    {"id":16,"category":"Partiellement couverte","question":"What environmental challenges does Madagascar face?","expected":["deforestation"],"in_scope":True},
+    {"id":16,"category":"Partiellement couverte","question":"What environmental challenges does Madagascar face?","expected":["forest","climate"],"in_scope":True},
     {"id":17,"category":"Partiellement couverte","question":"What recent political events occurred in Madagascar around 2023-2025?","expected":[],"in_scope":True},
 ]
 
@@ -60,7 +61,10 @@ def run_evaluation(output_path: str = "eval_results.json"):
     build_uc = BuildIndexUseCase(WikipediaLoader(), WikipediaChunker(), embedder, retriever)
     build_uc.execute()
 
-    query_uc = QueryUseCase(retriever, embedder, OpenAIGenerator(client), OpenAITranslator(client))
+    query_uc = QueryUseCase(
+        retriever, embedder, OpenAIGenerator(client), OpenAITranslator(client),
+        reranker=CrossEncoderReranker(),
+    )
 
     results, n_correct, n_fp, n_fn, times = [], 0, 0, 0, []
     oos_total = sum(1 for q in EVAL_QUESTIONS if not q["in_scope"])

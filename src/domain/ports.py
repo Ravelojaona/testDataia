@@ -92,3 +92,13 @@ class ITranslator(ABC):
     @abstractmethod
     def translate(self, text: str, target_language: str = "en") -> str:
         """Translate text to the target language."""
+
+
+class IReranker(ABC):
+    """Port: re-scores a candidate pool of chunks against a query."""
+
+    @abstractmethod
+    def rerank(
+        self, query: str, results: List[SearchResult], top_k: int
+    ) -> List[SearchResult]:
+        """Return the top_k results re-ordered by cross-encoder relevance."""

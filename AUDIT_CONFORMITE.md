@@ -11,7 +11,7 @@ exécutant les tests et une partie du pipeline.
 | 1 | Ingestion | Conforme |
 | 2 | Nettoyage | Conforme |
 | 3 | Chunking (texte + tableaux) | Conforme |
-| 4 | Indexation & Retrieval | Conforme (re-ranking optionnel non fait) |
+| 4 | Indexation & Retrieval | Conforme (re-ranking cross-encoder ajouté) |
 | 5 | Génération (grounding, citation, refus) | Conforme |
 | 6 | Cross-lingual FR/EN | Corrigé pendant l'audit |
 | 7 | Évaluation (≥15 questions + résultats) | Conforme, résultats exécutés |
@@ -46,10 +46,14 @@ pas de gestion `rowspan`/`colspan` (documentée dans les limites connues).
 Embeddings `text-embedding-3-small` (justifié coût/qualité). Vector store
 FAISS `IndexFlatIP` (justifié par la taille réduite du corpus, <1000
 chunks). Recherche hybride dense + BM25 fusionnée par Reciprocal Rank
-Fusion (`hybrid_retriever.py`). Le re-ranking cross-encoder mentionné
-comme option dans le cahier des charges n'est pas implémenté ; c'est
-listé comme piste d'amélioration dans le README, ce qui est acceptable
-puisque le sujet le présente comme optionnel.
+Fusion (`hybrid_retriever.py`). Re-ranking cross-encoder ajouté pendant
+l'audit (`src/infrastructure/reranker.py`, `ms-marco-MiniLM-L-6-v2`) : le
+retriever hybride remonte un pool élargi de 20 candidats, re-scoré par le
+cross-encoder qui juge (requête, passage) conjointement — plus précis que
+RRF seul pour départager des chunks proches (ex : gros tableaux denses).
+Motivé par un cas concret trouvé lors de l'audit : la question sur le
+recensement le plus récent ne remontait pas le bon chunk dans le top-5/10
+du retriever hybride seul.
 
 ### 5. Génération — conforme
 Prompt système forçant l'usage exclusif du contexte fourni, citation

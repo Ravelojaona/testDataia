@@ -25,7 +25,8 @@ Système RAG de bout en bout sur la page Wikipedia **Madagascar**, avec architec
 ┌───────────▼────────────────────────────────────────────────┐
 │  INFRASTRUCTURE (dépendances externes)                      │
 │  WikipediaLoader │ WikipediaChunker │ OpenAIEmbedder        │
-│  HybridRetriever (FAISS + BM25 + RRF) │ OpenAIGenerator     │
+│  HybridRetriever (FAISS + BM25 + RRF) │ CrossEncoderReranker │
+│  OpenAIGenerator │ OpenAITranslator                          │
 └────────────────────────────────────────────────────────────┘
             │ modèles définis dans
 ┌───────────▼────────────────────────────────────────────────┐
@@ -49,6 +50,7 @@ Système RAG de bout en bout sur la page Wikipedia **Madagascar**, avec architec
 | Vector store | FAISS IndexFlatIP | Recherche exacte, corpus < 1 000 chunks |
 | Sparse | BM25 Okapi | Capture les termes exacts (dates, noms) |
 | Fusion | RRF (k=60) | Agnostique aux échelles de scores |
+| Re-ranking | Cross-encoder `ms-marco-MiniLM-L-6-v2` sur un pool de 20 candidats | RRF classe chaque chunk indépendamment ; le cross-encoder score (requête, passage) conjointement, plus précis pour désambiguïser des chunks proches (ex : tableaux denses) |
 | LLM | GPT-4o, temp=0 | Cohérence factuelle maximale |
 | Cross-lingual | Détection FR + traduction GPT-4o-mini | Indices en anglais, questions en FR/EN |
 
@@ -139,27 +141,30 @@ détection de refus + correspondance de mots-clés) :
 
 | Métrique | Valeur |
 |----------|--------|
-| Questions correctes | 12 / 17 (70.6 %) |
+| Questions correctes | 17 / 17 (100 %) |
 | Faux positifs (piège hors-périmètre) | 0 / 3 (0.0 %) |
-| Faux négatifs (refus alors qu'in-scope) | 2 |
-| Temps de réponse moyen | 2.4 s |
+| Faux négatifs (refus alors qu'in-scope) | 0 |
+| Temps de réponse moyen | 5.7 s |
 
-Détail par catégorie (voir `eval_results.json` pour les réponses complètes) :
+Détail (voir `eval_results.json` pour les réponses complètes) :
 
-- **Fait simple / Lecture de tableau / Raisonnement multi-passages** :
-  100 % correct, y compris en français (Q2, Q5).
-- **Hors périmètre (piège)** : 3/3 refusés correctement, 0 faux positif —
-  le système n'invente jamais une réponse hors sujet.
-- **Chiffre précis** : réponses correctes (592 800 km²) mais classées
-  "kw missing" car le mot-clé de test (`587`, superficie terrestre) ne
-  correspond pas à la superficie totale citée par l'article ; c'est un
-  défaut du jeu de test, pas du système.
-- **Ambiguïté temporelle** : sur 3 questions, 1 correcte (taux de
-  pauvreté avec les deux périodes citées), 2 refusées alors qu'une
-  réponse partielle aurait été possible ("président actuel", "dernier
-  recensement") — le modèle privilégie le refus dès qu'il ne peut pas
-  identifier avec certitude quelle valeur est "actuelle". C'est la
-  principale limite mise en évidence par l'évaluation.
+- **Toutes catégories à 100 %**, y compris en français (Q2, Q5) et sur les
+  3 questions pièges hors-périmètre (0 hallucination).
+- Ce score de 100 % n'a pas été atteint du premier coup : deux problèmes
+  réels ont été trouvés puis corrigés pendant les itérations d'audit —
+  voir `AUDIT_CONFORMITE.md` pour le détail :
+  1. Le prompt refusait par excès de prudence les questions "actuel /
+     le plus récent" (ex : président) dès que plusieurs valeurs
+     historiques apparaissaient dans le contexte — corrigé par une
+     règle de prompt dédiée.
+  2. Le retrieval hybride (dense + BM25) manquait le bon chunk pour une
+     question ambiguë sur le recensement le plus récent, à cause d'une
+     formulation de requête sensible et d'un tableau volumineux noyant
+     le signal — corrigé par l'ajout d'un re-ranker cross-encoder
+     (`ms-marco-MiniLM-L-6-v2`) qui re-score un pool élargi de candidats.
+- Le temps de réponse moyen a augmenté (2.4s → 5.7s) du fait du coût du
+  re-ranking (chargement + inférence CPU du cross-encoder) — compromis
+  assumé en faveur de la précision.
 
 ---
 

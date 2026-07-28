@@ -27,6 +27,7 @@ from src.infrastructure.embedder import OpenAIEmbedder
 from src.infrastructure.generator import OpenAIGenerator, OpenAITranslator
 from src.infrastructure.hybrid_retriever import HybridRetriever
 from src.infrastructure.loader import WikipediaLoader
+from src.infrastructure.reranker import CrossEncoderReranker
 
 INDEX_PATH = os.environ.get("INDEX_PATH", "index")
 
@@ -55,6 +56,7 @@ def _make_container():
             embedder=embedder,
             generator=OpenAIGenerator(client),
             translator=OpenAITranslator(client),
+            reranker=CrossEncoderReranker(),
         ),
     }
 

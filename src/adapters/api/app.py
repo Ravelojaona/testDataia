@@ -21,6 +21,7 @@ from src.infrastructure.embedder import OpenAIEmbedder
 from src.infrastructure.generator import OpenAIGenerator, OpenAITranslator
 from src.infrastructure.hybrid_retriever import HybridRetriever
 from src.infrastructure.loader import WikipediaLoader
+from src.infrastructure.reranker import CrossEncoderReranker
 
 # ---------------------------------------------------------------------------
 # Dependency container (populated at startup)
@@ -77,6 +78,7 @@ def create_app() -> FastAPI:
             embedder=embedder,
             generator=generator,
             translator=translator,
+            reranker=CrossEncoderReranker(),
         )
 
         # Auto-load existing index on startup (non-blocking if absent)
